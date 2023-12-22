@@ -3,7 +3,11 @@ import { useState } from "react";
 function MessageBoard() {
   const [mesInput, setMesIput] = useState("");
   const [mesList, setMesList] = useState([]);
-
+  const deleteNaa = (c) => {
+    const boomJaa = [...mesList];
+    boomJaa.splice(c, 1);
+    setMesList(boomJaa);
+  };
   const handAddMesList = () => {
     const newMesList = [...mesList];
 
@@ -37,7 +41,14 @@ function MessageBoard() {
           return (
             <div key={index} className="message">
               <h1>{mes}</h1>
-              <button className="delete-button">x</button>
+              <button
+                className="delete-button"
+                onClick={() => {
+                  deleteNaa(index);
+                }}
+              >
+                x
+              </button>
             </div>
           );
         })}
